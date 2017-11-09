@@ -11,3 +11,4 @@ LazyData: true
 RoxygenNote: 6.0.1
 Dependencies: data.table
 Imports: ggplot2,data.table,readxl
+Description: data.table
