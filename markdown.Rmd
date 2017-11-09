@@ -1,0 +1,68 @@
+---
+title: "Crime in Adelaide"
+author: "Jubin Katyal"
+date: "November 9, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library,echo = FALSE}
+library(prfajkatyal)
+
+```
+## Aim 
+
+The aim of this report is to study the trends associated with frequency of criminal-offence incidients that fall under "Level - 1" category. We will focus on monthly trends related to "SERIOUS CRIMINAL TRESPASS" incidents for areas with postcodes: 5010 and 5013, and base our insights after studying such trends observed from 2012 to 2017.
+
+## Results
+
+#### Summarized Data
+
+```{r,echo = FALSE}
+
+```
+
+#### Relevant Plots
+
+```{r,echo = FALSE}
+library(ggplot2)
+library(readxl)
+library(data.table)
+postcodes_vec <- c("5010","5013")
+offence <- "SERIOUS CRIMINAL TRESPASS"
+stat_2012_2013 = setDT(read_excel("data/crime-statistics-2012-13.xlsx"))
+setnames(stat_2012_2013, c("date", "suburb", "postcode", "offence_level_1",
+                    "offence_level_2", "offence_level_3", "offence_count"))
+stat_2013_2014 <- setDT(read_excel("data/crime-statistics-2013-14.xlsx"))
+setnames(stat_2013_2014, c("date", "suburb", "postcode", "offence_level_1",
+                    "offence_level_2", "offence_level_3", "offence_count"))
+stat_2014_2015 <- setDT(read_excel("data/crime-statistics-2014-15.xlsx"))
+setnames(stat_2014_2015, c("date", "suburb", "postcode", "offence_level_1",
+                    "offence_level_2", "offence_level_3", "offence_count"))
+stat_2015_2016 <- setDT(read_excel("data/crime-statistics-2015-16.xlsx"))
+setnames(stat_2015_2016, c("date", "suburb", "postcode", "offence_level_1",
+                    "offence_level_2", "offence_level_3", "offence_count"))
+stat_2016_2017 <- setDT(read_excel("data/crime-statistics-2016-17.xlsx"))
+setnames(stat_2016_2017, c("date", "suburb", "postcode", "offence_level_1",
+                    "offence_level_2", "offence_level_3", "offence_count"))
+graph_1 <- offence_trends(stat_2012_2013, offence, postcodes_vec)
+graph_1
+graph_2 <- offence_trends(stat_2013_2014, offence, postcodes_vec)
+graph_2
+graph_3 <- offence_trends(stat_2014_2015, offence, postcodes_vec)
+
+graph_4 <- offence_trends(stat_2015_2016, offence, postcodes_vec)
+
+graph_5 <- offence_trends(stat_2016_2017, offence, postcodes_vec)
+
+c_plot <- cowplot::plot_grid(graph_1,graph_2,graph_3,graph_4,graph_5)
+
+plot(c_plot)
+```
+
+## Observations
+
+After careful observation of the above data, it can be stated that for some months, such as 

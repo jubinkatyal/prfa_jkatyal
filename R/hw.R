@@ -86,11 +86,11 @@ offence_trends <- function(crime_data, offence_description, postcodes) {
                                     hjust = 0,
                                     color = "#666666"))
 # plotting
-  plot(v)
+  v
 # shutting down printing device
   dev.off()
 # getting a print inside the console
-  plot(v)
+  v
 }
 
 # exporting libraries
