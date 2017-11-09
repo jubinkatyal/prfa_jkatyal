@@ -17,4 +17,3 @@ calculate_percentage <- function(x, y, d) {
   round(100 * decimal, d)  # Convert to % and round to d digits
 }
 
-devtools::install_github("jubinkatyal/prfa_jkatyal")
