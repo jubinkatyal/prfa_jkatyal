@@ -90,7 +90,7 @@ offence_trends <- function(crime_data, offence_description, postcodes) {
 # shutting down printing device
   dev.off()
 # getting a print inside the console
-  print(v)
+  plot(v)
 }
 
 # exporting libraries
